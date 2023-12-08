@@ -1,4 +1,27 @@
+\includepdf[pages=2-20]{2_integers}
+
 \begin{frame}[t]
-    \frametitle{Глава}
+    \frametitle{\normalsize \bf Линейные диофантовы уравнения}
+    \begin{itemize}
+        \item $ax + by = c$ \textbf{(*)}, где  $a,b,c \in \Z$ -- константы, а $x, y \in \Z$ -- неизвестные.
+        \item Если $c \nDiv \left( a,b \right)$, то, очевидно, (*) не имеет решений.
+        \item Иначе, пусть $a = da', b = db', c = dc'$. Разделим (*) на $\left( a,b \right)$, и получим $a'x + b'y = c'$, где $\left( a,b \right) = 1$.
+        \item По Теореме 4, существует линейное представление НОДа: $a'x_0 + b'y_0 = 1 \overset{\cdot c'} \Leftrightarrow a'(x_0c') + b'(y_0c') = c'$. 
+    \end{itemize}
+
+    \setcounter{theorem}{9}
+    \begin{theorem}[]
+        Решения (*) представляются в виде $x = x_0c' + tb'$, $y = y_0c' - ta'$, где $t \in \Z$.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}[t]
+    \begin{proof}[Доказательство]
+        Пусть мы нашли подходящую пару $\left( x_0, y_0 \right) $ для линейного представления $a'x + b'y = 1$. Тогда $\left( x_0c', y_0c' \right) $ -- пара, удовлетворяющая $a'x + b'y = c'$. Отсюда можно записать: $a'x + b'y = c' = a'(x_0c') + b'(y_0c') $ (подставили $\left( x_0c', y_0c \right)) $ Перегруппируем: $a'(x - x_0c') = b'(y_0c' - y)$ \textbf{(**)}. Так как $\left( a',b' \right) = 1$, а ЛЧ $\Div a'$, то остаётся единственный вариант --  $y_0c' - y \Div a' \Leftrightarrow y_0c' - y = a't \Leftrightarrow y = y_0c' - ta'$. Подставив в (**), получим: $a'(x - x_0c') = tb'a' \overset{a' \neq 0} \iff x - x_0c' = tb' \Leftrightarrow x = x_0c + tb'$.
+    \end{proof}
     
 \end{frame}
+
+\includepdf[pages=23-52]{2_integers}
+
+

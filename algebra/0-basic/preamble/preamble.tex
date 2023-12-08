@@ -1,6 +1,7 @@
 \documentclass[notheorems]{beamer}
 %Information to be included in the title page:
 
+\setbeamertemplate{navigation symbols}{}
 %%% Работа с русским языком
 \usepackage{cmap}					% поиск в PDF
 \usepackage{mathtext} 				% русские буквы в формулах
@@ -47,6 +48,29 @@
 \newcommand{\Cm}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\id}{\mathrm{id}}
+
+\makeatletter
+\DeclareRobustCommand{\Div}{\mathrel{\Div@}}
+\DeclareRobustCommand{\nDiv}{\mathrel{\nDiv@}}
+
+\newcommand{\Div@}{%
+  \mkern2mu\nonscript\mkern-2mu % some space in subscripts
+  \mathpalette\Div@@\relax
+  \mkern2mu\nonscript\mkern-2mu
+}
+\newcommand{\Div@@}[2]{%
+  \hbox{%
+    \sbox\z@{$#1T$}%
+    \vbox to \ht\z@{%
+      \offinterlineskip\m@th
+      \hbox{$#1.$}\vfil
+      \hbox{$#1.$}\vfil
+      \hbox{$#1.$}%
+    }%
+  }%
+}
+\newcommand{\nDiv@}{\centernot\Div@}
+\makeatother
 
 \newcommand{\imp}[2]{
 	(#1\,\,$\ra$\,\,#2)\,\,

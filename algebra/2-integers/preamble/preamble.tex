@@ -1,8 +1,7 @@
 \documentclass[notheorems]{beamer}
 %Information to be included in the title page:
 
-% \usefonttheme{serif} % нормальная тех тема
-
+\setbeamertemplate{navigation symbols}{}
 %%% Работа с русским языком
 \usepackage{cmap}					% поиск в PDF
 \usepackage{mathtext} 				% русские буквы в формулах
@@ -22,6 +21,7 @@
 \usepackage{icomma}                                    % "Умная" запятая
 
 \setbeamertemplate{theorem}[ams style]
+\setbeamertemplate{theorems}[numbered]
 
 %%% Свои символы и команды
 \usepackage{centernot} % центрированное зачеркивание символа
@@ -48,6 +48,29 @@
 \newcommand{\Cm}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\id}{\mathrm{id}}
+
+\makeatletter
+\DeclareRobustCommand{\Div}{\mathrel{\Div@}}
+\DeclareRobustCommand{\nDiv}{\mathrel{\nDiv@}}
+
+\newcommand{\Div@}{%
+  \mkern2mu\nonscript\mkern-2mu % some space in subscripts
+  \mathpalette\Div@@\relax
+  \mkern2mu\nonscript\mkern-2mu
+}
+\newcommand{\Div@@}[2]{%
+  \hbox{%
+    \sbox\z@{$#1T$}%
+    \vbox to \ht\z@{%
+      \offinterlineskip\m@th
+      \hbox{$#1.$}\vfil
+      \hbox{$#1.$}\vfil
+      \hbox{$#1.$}%
+    }%
+  }%
+}
+\newcommand{\nDiv@}{\centernot\Div@}
+\makeatother
 
 \newcommand{\imp}[2]{
 	(#1\,\,$\ra$\,\,#2)\,\,
@@ -89,7 +112,7 @@
 % \usepackage{enumitem}     % Настройка окружений itemize и enumerate
 \setlength\parindent{0pt}        % Устанавливает длину красной строки 15pt
 \setlength{\parskip}{0.75em}      % Вертикальный интервал между абзацами
-\linespread{1.0}
+\linespread{1.1}
 %\setcounter{secnumdepth}{0}      % Отключение нумерации разделов
 %\setcounter{section}{-1}         % Нумерация секций с нуля
 \usepackage{multicol}			  % Для текста в нескольких колонках
@@ -147,21 +170,21 @@
 }
 
 \newcommand{\AuthorName}{Д. В. Карпов}
-\newcommand{\SubjectName}{Теория графов}
+\newcommand{\SubjectName}{Алгебра}
 \newcommand{\ChapterId}{0}
-\newcommand{\ChapterName}{Теорема Татта}
+\newcommand{\ChapterName}{Основные понятия}
 
 \usepackage{fix-cm}
 
 \newtranslation[to=Russian]{Definition}{Определение}
 
-\title{\SubjectName. \ChapterName}
+\title{\SubjectName. Глава \ChapterId. \ChapterName}
 \author{\AuthorName}
-\institute{Extended edition}
+\institute{Университет ИТМО}
 \date{2023}
 \makeatletter
     \ifbeamer@countsect
-      \newtheorem{theorem}{\translate{Theorem}}
+      \newtheorem{theorem}{\translate{Theorem}}[section]
     \else
       \newtheorem{theorem}{\translate{Theorem}}
     \fi
