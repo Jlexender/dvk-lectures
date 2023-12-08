@@ -13,7 +13,7 @@
 
 \begin{frame}[t]
     \setcounter{theorem}{9}
-    \begin{theorem}[]
+    \begin{theorem}[Решения диофанта]
         Решения (*) представляются в виде $x = x_0c' + tb'$, $y = y_0c' - ta'$, где $t \in \Z$.
     \end{theorem}
     
@@ -23,6 +23,30 @@
     
 \end{frame}
 
-\includepdf[pages=23-52]{2_integers}
+\includepdf[pages=23-30]{2_integers}
+
+\begin{frame}[t]
+    \frametitle{\bf \normalsize Теорема Эйлера}
+    \small
+    \setcounter{theorem}{14}
+    \begin{theorem}[Эйлера]
+        Пусть $m \in \N, a \in \Z, (a,m)=1$. Тогда $a^{\phi(m)} \equiv 1 \Mod m$
+    \end{theorem}
+    
+    \begin{proof}[Доказательство]
+        \begin{itemize}
+            \item Пусть $r_1, \dots, r_{\phi(m)}$ -- ПрСВ $\Mod m$.
+            \item По Теореме 14 $ar_1, \dots, ar_{\phi(m)}$ -- ПрСВ $\Mod m$.
+            \item Перемножив 2 эти ПрСВ, мы получим, что они сравнимы$\Mod m$, потому что в каждой $\phi(m)$ чисел, и для каждого из первой найдётся какое-то сравнимое$\Mod m$ из второй. Пусть  $R = r_1 \dots r_{\phi(m)}$ 
+            \item Тогда $a^{\phi(m)}R \equiv R \Mod m$. Так как $\forall i: (r_i, m) = 1 $, то на $R$ можно сократить: \fbox{$a^{\phi(m)} \equiv 1 \Mod m$}
+        \end{itemize}
+    \end{proof}
+    \vspace{-0.7cm}
+    \begin{corollary}[Малая теорема Ферма]
+        Пусть $a \in \Z, p \in \mathbb{P}, (a, p) = 1$. Тогда $a^{p-1} \equiv 1 \Mod p$.
+    \end{corollary}
+\end{frame}
+
+\includepdf[pages=32-51]{2_integers}
 
 

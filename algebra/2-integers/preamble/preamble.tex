@@ -15,6 +15,7 @@
 \deftranslation[to=russian]{Theorem}{Теорема}
 \deftranslation[to=russian]{Lemma}{Лемма}
 \deftranslation[to=russian]{Definition}{Определение}
+\deftranslation[to=russian]{Corollary}{Следствие}
 
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % пакеты AMS
@@ -81,6 +82,8 @@
 \newcommand{\Root}[2]{
 	\left\{\!\sqrt[#1]{#2}\right\}
 }
+
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 
 \let\bs\backslash
 \let\Lra\Leftrightarrow
@@ -188,7 +191,7 @@
     \else
       \newtheorem{theorem}{\translate{Theorem}}
     \fi
-    \newtheorem{corollary}{\translate{Corollary}}
+    \newtheorem*{corollary}{\translate{Corollary}}
     \newtheorem{fact}{\translate{Fact}}
     \newtheorem{lemma}{\translate{Lemma}}
     \newtheorem{problem}{\translate{Problem}}
