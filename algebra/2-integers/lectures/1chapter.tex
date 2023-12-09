@@ -47,6 +47,72 @@
     \end{corollary}
 \end{frame}
 
-\includepdf[pages=32-51]{2_integers}
+\includepdf[pages=32-34]{2_integers}
 
+\begin{frame}[t]
+    \frametitle{\bf \normalsize Сумма функции Эйлера по делителям числа}
+    
+    \setcounter{theorem}{16}
+    \begin{theorem}[]
+        Для любого $n \in \N: \displaystyle \sum_{d \mid n} \phi(d) = n$
+    \end{theorem}
+
+    \begin{proof}[Доказательство]
+        \begin{itemize}
+            \item Запишем в ряд дроби: $\frac{1}{n}, \frac{2}{n}, \dots, \frac{n}{n}$, приведём их к несократимому виду.
+            \item Тогда множество знаменателей -- все делители числа $n$.
+            \item Легко видеть, что для знаменателя $q$ всего существует $\phi(q)$ дробей (потому что дробь несократима).
+            \item А всего выписано $n$ дробей. Значит, просуммировав по всем $q$ (то есть, по делителям $n$), получим:
+                \begin{center}
+                    $\displaystyle\sum_{d | n} \phi(d) = n$, \qedsymbol
+                \end{center}
+        \end{itemize}
+    \end{proof}
+\end{frame}
+
+\includepdf[pages=36-44]{2_integers}
+
+\begin{frame}[t]
+    \frametitle{\normalsize \bf Формула обращения Мёбиуса}
+    \setcounter{theorem}{19}
+
+    \begin{theorem}[ФОМ]
+        Пусть $f,g: \N \mapsto $, причём $g(n) = \sum\limits_{d \mid n} f(d)$ (сумма по делителям функции $f$). Тогда $f(n) = \sum\limits_{d \mid n} \left( \mu(\frac{n}{d}) g(d) \right) $.
+    \end{theorem}
+
+    \begin{proof}[Доказательство]
+        \renewcommand{\qedsymbol}{}
+        \begin{align*}
+            \sum_{d | n} \left( \mu \left( \frac{n}{d} \right)  f(d) \right) = \sum_{d | n} \left( \mu\left(\frac{n}{d}\right) \cdot \sum_{d'| d}^{} g(d') \right) 
+        \end{align*}
+        Перегруппируем слагаемые: сначала будем суммировать по $d'$ ($d' \mid d \mid n \Rightarrow d' \mid n$), но тогда для каждого слагаемого этой суммы нужно закреплять $d: d' | d | n$. 
+    \end{proof}
+    
+\end{frame}
+\begin{frame}[t]
+    \[
+        \sum_{d | n} \left( \mu\left(\frac{n}{d}\right) \cdot \sum_{d'| d}^{} g(d') \right) = \sum_{d' | n}^{} \left( g(d') \cdot \sum_{d' | d | n}^{} \mu \left( \frac{n}{d} \right)  \right)
+    \]
+    Почти каждое слагаемое суммы равно 0, т. к. по Лемме 8 внутренняя сумма равна 0 всегда, кроме случая $d' = n$, но тогда подставим $d' = n$: \[
+        \sum_{\substack{d' | n  \\ d' = n}}^{} \left( g(d') \cdot \sum_{d' | d | n}^{} \mu \left( \frac{n}{d} \right)  \right) = g(n) \sum_{n | d | n}^{} \mu \left( \frac{n}{d} \right) = g(n) \mu (1) = g(n), \qedsymbol
+    \]
+\end{frame}
+
+\begin{frame}[t]
+    \small
+    \frametitle{\bf \normalsize Сумма по делителям функции Эйлера}
+    \framesubtitle{Альтернативное доказательство}
+
+    \begin{itemize}
+        \item Предположим, что $\sum\limits_{d | n} \phi(d) = n$. 
+        \item Мы уже знаем, что при $n = p_1^{\alpha_1} \dots p_k^{\alpha_k}$ значение функции Эйлера равно $\phi(n) = n\left( 1 - \frac{1}{p_1} \right) \left( 1 - \frac{1}{p_2} \right) \dots \left( 1 - \frac{1}{p_k} \right)$. 
+        \item Значит, по ранее выведенной ФОМ достаточно показать, что $\phi(n) = \sum\limits_{d | n} \left( \mu \left( \frac{n}{d} \right) \cdot \sum\limits_{d' | d} \phi(d') \right) $.
+        \item При $d = p_{i_1} \dots p_{i_t}$ мы имеем $\mu(d) = (-1)^t, \mu(1) = 1$, в остальных случаях  $\mu(d) = 0$. Поэтому, после технической работы слева равенство будет очевидно: \[
+               n\left(1 - \sum_{1 \leq i \leq s} \frac{1}{p_i} + \sum_{1 \leq i_1 < i_2 \leq s}^{} \frac{1}{p_{i_1}p_{i_2}} - \dots \right)\overset{?} = 
+ n\left( 1 - \frac{1}{p_1} \right) \dots \left( 1 - \frac{1}{p_k} \right)         \] 
+    \end{itemize}
+    
+    \hfill \qedsymbol
+\end{frame}
+\includepdf[pages=46-52]{2_integers}
 
