@@ -1,0 +1,69 @@
+\begin{frame}[t]
+    \begin{theorem}[D.König, 1931]
+        В двудольном графе $G = \left( L, R, E \right): \alpha'(G) = \beta(G)$.
+    \end{theorem}
+
+    \begin{proof}[Доказательство]
+        \renewcommand{\qedsymbol}{}
+        Будем доказывать теорему при помощи теоремы Холла.
+        \begin{itemize}
+            \item Рассмотрим наименьшее вершинное покрытие (обозначим $B, \beta(G) = |B|$). Перестроим двудольный граф следующим образом: $G' = \left(B, V(G) \backslash B, E'\right)$ (в левую долу поместим выбранные в $B$ вершины, остальные поместим в правую).
+            \item В правой доле рёбер нет: иначе $B$ не является вершинным покрытием. Удалим все рёбра между вершинами левой доли -- правомерность будет объяснена позже.
+        \end{itemize}
+          
+    \end{proof}
+\end{frame}
+
+\begin{frame}[t]
+    \begin{figure}[htpb]
+        \centering
+        \includegraphics[width=\textwidth]{images/transform}
+        \footnotesize Преобразование графа
+        \label{fig:transform}
+    \end{figure}
+    
+    \begin{itemize}
+        \item Для того, чтобы доказать, что $\alpha'(G) = \beta(G)$, достаточно доказать, что $\alpha'(G) \geq \beta(G)$ и $\alpha'(G) \leq \beta(G)$.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[t]
+    \small
+    \frametitle{$\alpha'(G) \geq \beta(G)$}
+    \begin{itemize}
+        \item Проверим наличие паросочетание размера $|B| = \beta(G)$. Достаточно проверить условие Холла для $B$.
+        \item Если это не так, то $\exists S \subset B: |N_{G'}(S)| < |S|$ и, заменив \textcolor{blue}{$S$} на \textcolor{red}{$N_G(S)$}, мы получим, что множество рёбер, которое покрывается, остаётся прежним ($ \Rightarrow $ условие для покрытия сохраняется), а размер покрытия станет меньше, противоречие с минимальностью $B$. 
+    \end{itemize}
+    \vspace{-5mm}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.45\textwidth]{images/hall}
+        \label{fig:hall}
+    \end{figure}
+    
+\end{frame}
+
+\begin{frame}[t]
+    \small
+    \frametitle{$\alpha'(G) \leq \beta(G)$}
+
+    \begin{itemize}
+        \item Единственный вариант улучшить паросочетание -- каким-то образом добавить удалённые ранее рёбра. 
+        \item Выделим покрывающее $B$ паросочетание $M$. Будем преобразовывать его в $M'$.
+        \item Выбрав одно удалённое ребро для $M'$, нам придётся убирать рёбра паросочетания для двух инцидентных ребру вершин $u, v$, а значит, удалять по крайней мере 2 их ребра. 
+        \item  $N_{G'}(u) \cup N_{G'}(v) \notin M'$, потому что в правой доле нет рёбер, а остальные вершины уже соединены рёбрами паросочетания $M$. 
+        \item Значит, паросочетание лишь уменьшится.
+    \hfill \qedsymbol{}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Рисунок к последним пунктам}
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{images/restore}
+        \label{fig:restore}
+    \end{figure}
+\end{frame}

@@ -1,6 +1,8 @@
 \documentclass[notheorems]{beamer}
 %Information to be included in the title page:
 
+% \usefonttheme[onlymath]{serif}
+
 \setbeamertemplate{navigation symbols}{}
 %%% Работа с русским языком
 \usepackage{cmap}					% поиск в PDF
@@ -81,6 +83,8 @@
 \newcommand{\Root}[2]{
 	\left\{\!\sqrt[#1]{#2}\right\}
 }
+
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 
 \let\bs\backslash
 \let\Lra\Leftrightarrow

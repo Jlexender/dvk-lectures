@@ -1,6 +1,8 @@
 \documentclass[notheorems]{beamer}
 %Information to be included in the title page:
 
+% \usefonttheme[onlymath]{serif}
+
 \setbeamertemplate{navigation symbols}{}
 %%% Работа с русским языком
 \usepackage{cmap}					% поиск в PDF
@@ -15,7 +17,6 @@
 \deftranslation[to=russian]{Theorem}{Теорема}
 \deftranslation[to=russian]{Lemma}{Лемма}
 \deftranslation[to=russian]{Definition}{Определение}
-\deftranslation[to=russian]{Corollary}{Следствие}
 
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % пакеты AMS
@@ -174,8 +175,8 @@
 
 \newcommand{\AuthorName}{Д. В. Карпов}
 \newcommand{\SubjectName}{Алгебра}
-\newcommand{\ChapterId}{2}
-\newcommand{\ChapterName}{Целые числа}
+\newcommand{\ChapterId}{0}
+\newcommand{\ChapterName}{Основные понятия}
 
 \usepackage{fix-cm}
 
@@ -191,7 +192,7 @@
     \else
       \newtheorem{theorem}{\translate{Theorem}}
     \fi
-    \newtheorem*{corollary}{\translate{Corollary}}
+    \newtheorem{corollary}{\translate{Corollary}}
     \newtheorem{fact}{\translate{Fact}}
     \newtheorem{lemma}{\translate{Lemma}}
     \newtheorem{problem}{\translate{Problem}}
