@@ -70,7 +70,24 @@
     \end{proof}
 \end{frame}
 
-\includepdf[pages=36-44]{2_integers}
+\includepdf[pages=36-39]{2_integers}
+
+\begin{frame}[t]
+    \frametitle{\bf \normalsize Китайская теорема об остатках}
+    \small
+    \setcounter{theorem}{18}
+    \begin{theorem}
+        Пусть $m_1, \dots, m_k$ -- попарно взаимно простые натуральные числа, $m = m_1 \dots m_k; a_1, \dots, a_k \in \Z$. Тогда существует единственное такое $a \in \left\{ 0, 1, \dots , m-1 \right \} $, удовлетворяющее системе сравнений.
+    \end{theorem}
+
+    \begin{proof}[Доказательство]
+        Рассмотрим отображение $f: \Z_m \mapsto \Z_{m_1} \times \Z_{m_2} \times \dots \times \Z_{m_k}$, которое задано формулой $f(x) = \left( r_1, \dots, r_i, \dots, r_m \right)$. Здесь $r_i = a - qm_i, 0 \leq r_i < m_i$. Докажем, что отображение $f$ -- инъекция: пусть это не так, тогда для $x \neq y: f(x) = f(y)$, значит для любого $m_i: x \equiv r_i, y \equiv r_i \Rightarrow x-y \equiv 0 \Mod {m_i} $. Но тогда $x-y \Div m_i, i \in \left\{ 1, 2, \dots , k \right \} \Rightarrow x-y \Div m$. Но $x \neq y, 0 \leq x,y \leq m-1 \Rightarrow 0 < \left| x - y \right| \leq m-1$, противоречие. 
+
+        Докажем, что это биекция: в $\Z_m$ всего $m$ элементов, как и в $\Z_{m_1} \times \Z_{m_2} \times \dots \times \Z_{m_k}$ (по правилу умножения). Значит, $f$ -- биекция, и каждой системе сравнений сопоставляется ровно одно решение.
+    \end{proof}
+\end{frame}
+
+\includepdf[pages=42-44]{2_integers}
 
 \begin{frame}[t]
     \frametitle{\normalsize \bf Формула обращения Мёбиуса}
