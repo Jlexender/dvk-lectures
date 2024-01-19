@@ -1,0 +1,174 @@
+\begin{frame}[t]
+    \frametitle{Преимущества}
+    \begin{itemize}
+        \item Более краткий вид записи
+        \item Более простая работа с выражением 
+        \item Все правила работают также и с мультипликацией $\prod$ 
+    \end{itemize}
+     
+    { \color{blue} Как мы убедимся, суммирование и произведение позволят записать даже те выражения, которые нельзя записать через троеточия в понятном виде, и более того, преобразовывать их. }
+
+    \begin{examples}[]
+        \begin{gather*}
+            1 + 2 + 3 + \dots + n = \sum_{i=1}^{n} i \\
+            1 + \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{n} = \sum_{i=1}^{n} \frac{1}{i}
+        \end{gather*}
+    \end{examples}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Смещение индекса заменой}
+    \alert{Проблема.} На самом деле, суммы $\color{blue} \sum\limits_{i=5}^{n-3} i$ и $\color{blue} \sum\limits_{i=2}^{n-6} \left( i+3 \right)$ равны. 
+    
+    \begin{itemize}
+        \item Стоит придерживаться правила, что все индексы начинаются с одного и того же числа (например, с 0 или 1), чтобы не пропустить равенство в преобразовании. 
+        \item Для того, чтобы сместить индекс во второй сумме, введём замену $\color{blue} j = i+3$ (чтобы начало шло с 5, как в первой сумме)
+        \item Тогда $\color{blue} i = j-3$
+        \item Подставим $\color{blue} j-3$ вместо $\color{blue} i$ во вторую сумму и получим требуемое: \[
+                \color{blue} \sum_{i=2}^{n-6} \left( i+3 \right) = \sum_{j=5}^{n-3} \left( j - 3 + 3 \right) = \sum_{j=5}^{n-3} j
+        \] 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Бином Ньютона}
+
+\begin{proof}[Доказательство]
+    Докажем известное тождество $\color{blue} \left( a+b \right)^n = \sum\limits_{i=0}^{n} \begin{pmatrix} n \\ i \end{pmatrix} a^i b^{n-i} $ индукцией по $\color{blue}n$.
+
+    \underline{База.} При $\color{blue} n=1$, очевидно, равенство верно.
+
+     \underline{Переход.} 
+     \begin{align*}
+         \color{blue} \left( a+b \right)^{n+1} = \left( a+b \right) ^{n} \cdot \left( a+b \right) = \left( a+b \right) \cdot \sum_{i=0}^{n} \begin{pmatrix} n \\ i \end{pmatrix} a^i b^{n-i} = \\
+         \color{blue} = b^{n+1} + \sum_{i=0}^{n} \left(\begin{pmatrix} n \\ i \end{pmatrix} a^{i}b^{n-i} + \begin{pmatrix} n \\ i-1 \end{pmatrix} a^{i}b^{n-i} \right)  + a^{n+1} = \sum_{i=0}^{n+1} \begin{pmatrix} n+1 \\ i \end{pmatrix} a^{i}b^{n-i}
+     \end{align*}
+\end{proof}
+\end{frame}
+
+\begin{frame}[t]
+    \small
+    \frametitle{Вложенные, условные суммы}
+    \begin{itemize}
+        \item Предположим ситуацию: необходимо записать сумму от {\color{blue} 1 до $i=1..n$}, каждое слагаемое которой является \textit{\color{blue} суммой от 1 до $i$}
+        \item Конечно, это можно записать как $\color{blue} \sum\limits_{i=1}^{n} \sum\limits_{j=1}^{i} j $. 
+        \item Читать такие выражения становится {\color{blue} гораздо} труднее. 
+        \item Поэтому полезно понимать, что все вложенные суммы можно сократить до набора равенств в {\color{blue} одной} суммации: 
+        \begin{gather*}
+            \color{blue} \sum_{\substack{1 \leq i \leq n \\ 1 \leq j \leq i}} j \\
+            \color{blue} \left( a+b \right)^n = \sum\limits_{i+j = n} \begin{pmatrix} i \\ n \end{pmatrix} a^{i}b^{j}
+        \end{gather*}
+    \end{itemize}
+    \vspace{-3mm}
+    Обратите внимание, что переменные $\color{blue} i,j$ можно также выражать друг через друга.
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Производная многочленов}
+    \begin{itemize}
+        \item Докажем, что $\color{blue} \left( fg \right)' = f'g + fg'$
+        \item Пусть $\color{blue} f = a_n x^{n} + \dots + a_0$, $\color{blue} g = b_n x^{n} + \dots + b_0$ (можно считать, что многочлены одной степени, иначе дополним коэффициенты нулями)
+    \end{itemize}
+    \begin{align*}
+        &\color{blue} \left( fg \right)' = \sum_{\substack{0 \leq i \leq 2n \\ j+k=i}} (a_j b_k x^i)' = \sum_{\substack{0 \leq i \leq 2n \\ j+k=i}}  \left( a_j b_k i x^{i-1} \right)  \\ 
+        &\color{blue} f'g + fg' = \sum_{\substack{0 \leq i \leq 2n \\ j+k = i}} a_j b_k j x^{i-1} + \sum_{\substack{0 \leq i \leq 2n \\ j + k = i}} a_j b_k k x^{i-1} = \sum_{\substack{0 \leq i \leq 2n \\ j+k=i}} a_j b_k (j+k)x^{i-1} = \left( fg \right)'
+    \end{align*}
+    \hfill \qedsymbol
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Перегруппировка сумм по делителям}
+    \begin{lemma} \vspace{3mm}
+        Пусть $\color{blue} f,g$ -- произвольные функции. Тогда $\color{blue} \displaystyle \sum_{d \mid n} \left( f(d) \sum_{d' \mid d} g(d') \right) = \sum_{d' \mid n} \left( g(d') \sum_{d' \mid d \mid n} f(d) \right)  $
+    \end{lemma}
+    \begin{proof}[Доказательство]
+    \begin{itemize}
+        \item Перегруппируем слагаемые: будем сначала суммировать по $\color{blue} d' \mid n$ ($\color{blue} d' \mid d \mid n \Rightarrow d' \mid n$). 
+        \item Далее суммируем по $\color{blue} d \mid n$, но, если $\color{blue} d \nDiv d'$, то слагаемого с таким $\color{blue} d$ не было в изначальной сумме. 
+        \item Записав это рассуждение, получим в точности утверждение леммы.
+    \end{itemize}
+    \end{proof}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Формула обращения Мёбиуса}
+    \small
+    \begin{theorem}[]
+        Пусть $\color{blue} f: \N \mapsto$. Тогда $\color{blue} \displaystyle f(n) = \sum_{d \mid n} \left( \mu \left( \frac{n}{d} \right) \sum_{d' \mid d} f(d')  \right)$.
+    \end{theorem}
+
+    \begin{proof}[Доказательство]
+        Применим доказанную выше лемму: \begin{gather*}
+            \color{blue} \sum_{d \mid n} \left( \mu \left( \frac{n}{d} \right) \sum_{d' \mid d} f(d')  \right) = \sum_{d' \mid n} \left( f(d') \sum_{d' \mid d \mid n} \mu \left( \frac{n}{d} \right)  \right) 
+        \end{gather*}
+        По одной из лемм в главе <<целые числа>>, вложенная сумма обращается в 0 всегда, кроме случая $\color{blue} d' = n$. Стало быть,  \[
+            \color{blue} \sum_{d' \mid n} \left( f(d') \sum_{d' \mid d \mid n} \mu \left( \frac{n}{d} \right) \right) = f(n), \ \ \ \qedsymbol
+        \]
+    \end{proof}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Обобщённый бином Ньютона}
+    \small
+    \begin{theorem}[]
+        \[
+            \color{blue} \left( a_1 + a_2 + \dots + a_k \right)^n = \sum_{i_1 + i_2 + \dots + i_k = n}  \begin{pmatrix} n \\ i_1, i_2, \dots, i_k \end{pmatrix} a_1^{i_1}a_2^{i_2} \dots a_k^{i_k} 
+        \]
+    \end{theorem}
+
+    \begin{proof}[Доказательство]
+        \renewcommand{\qedsymbol}{}
+        Индукция по $\color{blue} n$.
+        
+        \underline{База.} При $\color{blue} n=1$, очевидно, равенство верно.
+
+         \underline{Переход.} 
+         \begin{gather*}
+             \color{blue} \left( a_1 + \dots + a_k \right) ^{n} = \left( a_1 + \left( a_2 + \dots + a_k \right)  \right)^{n} = \sum_{i+j = n} \left(  \begin{pmatrix} n \\ i \end{pmatrix} a_1^{i} \left( a_2 + \dots + a_k \right)^{j} \right) = \\
+             \color{blue} = \sum_{\substack{i+j = n \\ i_2 + i_3 + \dots + i_k = j}} \left( a_1^{i} a_2^{i_2} \dots a_k ^{i_k} \cdot \begin{pmatrix} n \\ i \end{pmatrix} \begin{pmatrix} j \\ i_2, i_3, \dots , i_k \end{pmatrix}  \right) 
+        \end{gather*}
+    \end{proof}
+    
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Конец доказательства}
+    \begin{itemize}
+        \item Остаётся заметить, что нам нужно лишь доказать, что $$\color{blue} \begin{pmatrix} n \\ i \end{pmatrix} \begin{pmatrix} j \\ i_2, i_3, \dots , i_k \end{pmatrix} = \begin{pmatrix} n \\ i, i_2, \dots, i_k \end{pmatrix}$$.
+        \item В то же время, $\color{blue} j = n-i$.
+        \item Раскрыв число сочетаний и полиномиальный коэффициент, получим: \[
+                \color{blue} \frac{n!}{i! \left( n-i \right)!} \cdot \frac{\left( n-i \right) !}{i_2! i_3! \dots i_k!} = \frac{n!}{i!i_2! \dots i_k!} = \begin{pmatrix} n \\ i, i_2, \dots, i_k \end{pmatrix} 
+        \] 
+    \end{itemize}
+    \hfill \qedsymbol
+\end{frame}
+
+\begin{frame}[t]
+    \small
+    \frametitle{Сумма первообразных корней из 1}
+    
+    \begin{theorem}[]
+        Сумма первообразных корней из 1 по модулю $n$ равна  $\mu(n)$
+    \end{theorem}
+    \begin{proof}[Доказательство]
+        \renewcommand{\qedsymbol}{}
+        Будем пробегать по всем $\color{blue} k=1..n$ и, если $(k,n) \neq 1$, обращать слагаемые в 0 по свойству суммы Мёбиуса.
+        \begin{gather*}
+            \color{blue} \sum_{(k, n) = 1} e^{i \frac{2\pi k}{n}} = \sum_{k=1}^{n} \left( e^{i \frac{2\pi k}{n}} \sum_{1 \mid d \mid \left( k,n \right) } \mu(d) \right) = \sum_{(k, n) \mid n} \left( e^{i \frac{2\pi k}{n}} \sum_{1 \mid d \mid \left( k,n \right) } \mu(d) \right) = \\
+            \color{blue} \overset{lem} = \sum_{d \mid n} \left( \mu(d) \sum_{d \mid \left( k,n \right) \mid n} e^{i \frac{2\pi k}{n}} \right) = \sum_{d \mid n} \left( \mu(d) \sum_{d \mid \left( k,n \right)} e^{i \frac{2\pi k}{n}} \right) \\ \color{blue} = \sum_{d \mid n} \left( \mu(d) \sum_{\left( k,n \right)=d,2d,3d \dots , \left( n / d\right) d  } e^{i \frac{2\pi k}{n}} \right)= \sum_{d \mid n} \left( \mu(d) \sum_{k=d,2d,3d \dots , \left( n / d\right) d   } e^{i \frac{2\pi k}{n}} \right)
+        \end{gather*}
+    \end{proof}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Конец доказательства}
+    \small
+    \begin{gather*}
+        \color{blue} \sum_{d \mid n} \left( \mu(d) \sum_{\left( k,n \right)=d,2d,3d \dots , \left( n / d) d \right)  } e^{i \frac{2\pi k}{n}} \right)= \sum_{d \mid n} \left( \mu(d) \sum_{k=d,2d,3d \dots , \left( n / d) d \right)  } e^{i \frac{2\pi k}{n}} \right) = \\ \color{blue}= \sum_{d \mid n} \left( \mu(d) \sum_{\left( k,n \right)=d,2d,3d \dots , \left( n / d) d \right)  } e^{i \frac{2\pi k}{n}} \right) 
+        = \sum_{d \mid n} \left( \mu(d) \sum_{\ell = 1}^{n / d} e^{i \frac{2\pi \ell d}{n}} \right) = \sum_{d \mid n} \left( \mu(d) \sum_{\ell = 1}^{n / d} e^{i \frac{2\pi \ell}{n / d}} \right)
+    \end{gather*}
+    Заметим, что вложенная сумма обращается в 0 всегда, кроме случая $\color{blue} n = d$ (как сумма корней из 1). Значит,  \[
+        \color{blue} \sum_{d \mid n} \left( \mu(d) \sum_{\ell = 1}^{n / d} e^{i \frac{2\pi \ell}{n / d}} \right) \overset{n = d} = \mu(n) \cdot e^{i \cdot 2\pi} = \mu(n) 
+    \]
+    \hfill \qedsymbol
+\end{frame}
