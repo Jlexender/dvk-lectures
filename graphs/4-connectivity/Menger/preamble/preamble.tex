@@ -1,29 +1,17 @@
-\documentclass[notheorems, aspectratio=169]{beamer}
-%Information to be included in the title page:
+\documentclass[a4paper,12pt]{article}
 
-\usefonttheme[onlymath]{serif}
-
-\setbeamertemplate{navigation symbols}{}
 %%% Работа с русским языком
 \usepackage{cmap}					% поиск в PDF
 \usepackage{mathtext} 				% русские буквы в формулах
 \usepackage[T2A]{fontenc}			% кодировка
 \usepackage[utf8]{inputenc}			% кодировка исходного текста
-\usepackage[russian]{babel}	% локализация и переносы
+\usepackage[english,russian]{babel}	% локализация и переносы
 % \usepackage{indentfirst}            % красная строка в первом абзаце
 \frenchspacing                      % равные пробелы между словами и предложениями
-
-\uselanguage{russian}
-\deftranslation[to=russian]{Theorem}{Теорема}
-\deftranslation[to=russian]{Lemma}{Лемма}
-\deftranslation[to=russian]{Definition}{Определение}
 
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % пакеты AMS
 \usepackage{icomma}                                    % "Умная" запятая
-
-\setbeamertemplate{theorem}[ams style]
-\setbeamertemplate{theorems}[numbered]
 
 %%% Свои символы и команды
 \usepackage{centernot} % центрированное зачеркивание символа
@@ -37,19 +25,6 @@
 \renewcommand{\ge}{\ensuremath{\geqslant}}
 \renewcommand{\geq}{\ensuremath{\geqslant}}
 \renewcommand{\emptyset}{\ensuremath{\varnothing}}
-
-\DeclareMathOperator{\sgn}{sgn}
-\DeclareMathOperator{\ke}{Ker}
-\DeclareMathOperator{\im}{Im}
-\DeclareMathOperator{\re}{Re}
-
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Cm}{\mathbb{C}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\id}{\mathrm{id}}
 
 \makeatletter
 \DeclareRobustCommand{\Div}{\mathrel{\Div@}}
@@ -74,6 +49,19 @@
 \newcommand{\nDiv@}{\centernot\Div@}
 \makeatother
 
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\ke}{Ker}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\re}{Re}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Cm}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\id}{\mathrm{id}}
+
 \newcommand{\imp}[2]{
 	(#1\,\,$\ra$\,\,#2)\,\,
 }
@@ -84,7 +72,7 @@
 	\left\{\!\sqrt[#1]{#2}\right\}
 }
 
-\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\renewcommand\labelitemi{$\triangleright$}
 
 \let\bs\backslash
 \let\Lra\Leftrightarrow
@@ -97,12 +85,13 @@
 
 %%% DISPLAYSTYLE
 
+\everymath{\displaystyle}
 %%% Перенос знаков в формулах (по Львовскому)
 \newcommand{\hm}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}}
 
 %%% Работа с картинками
 \usepackage{graphicx}    % Для вставки рисунков
-\setlength\fboxsep{4pt}  % Отступ рамки \fbox{} от рисунка
+\setlength\fboxsep{3pt}  % Отступ рамки \fbox{} от рисунка
 \setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
 \usepackage{wrapfig}     % Обтекание рисунков текстом
 
@@ -111,22 +100,73 @@
 \usepackage{longtable}                        % Длинные таблицы
 \usepackage{multirow}                         % Слияние строк в таблице
 
+%%% Теоремы
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{proposition}{Утверждение}[section]
+\newtheorem*{exercise}{Упражнение}
+\newtheorem*{problem}{Задача}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem*{corollary}{Следствие}
+\newtheorem*{note}{Замечание}
+\newtheorem*{reminder}{Напоминание}
+\newtheorem*{example}{Пример}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Решение}
+\newtheorem{property}{Свойство}[subsection]
+
 %%% Оформление страницы
+\usepackage{extsizes}     % Возможность сделать 14-й шрифт
+\usepackage{geometry}     % Простой способ задавать поля
 \usepackage{setspace}     % Интерлиньяж
-% \usepackage{enumitem}     % Настройка окружений itemize и enumerate
-\setlength\parindent{0pt}        % Устанавливает длину красной строки 15pt
+\usepackage{enumitem}     % Настройка окружений itemize и enumerate
+\setlist{leftmargin=25pt} % Отступы в itemize и enumerate
+
+\geometry{top=25mm}    % Поля сверху страницы
+\geometry{bottom=30mm} % Поля снизу страницы
+\geometry{left=20mm}   % Поля слева страницы
+\geometry{right=20mm}  % Поля справа страницы
+
+\setlength\parindent{15pt}        % Устанавливает длину красной строки 15pt
+\linespread{1.3}                  % Коэффициент межстрочного интервала
 \setlength{\parskip}{0.75em}      % Вертикальный интервал между абзацами
-\linespread{1.1}
 %\setcounter{secnumdepth}{0}      % Отключение нумерации разделов
 %\setcounter{section}{-1}         % Нумерация секций с нуля
 \usepackage{multicol}			  % Для текста в нескольких колонках
 \usepackage{soulutf8}             % Модификаторы начертания
 
 %%% Содержаниие
+\usepackage{tocloft}
+\tocloftpagestyle{main}
 %\setlength{\cftsecnumwidth}{2.3em}
 %\renewcommand{\cftsecdotsep}{1}
 %\renewcommand{\cftsecpresnum}{\hfill}
 %\renewcommand{\cftsecaftersnum}{\quad}
+
+%%% Шаблонная информация для титульного листа
+\newcommand{\CourseName}{Теория графов}
+\newcommand{\FullCourseNameFirstPart}{\so{МАТЕМАТИЧЕСКИЙ АНАЛИЗ}}
+\newcommand{\SemesterNumber}{I}
+\newcommand{\LecturerInitials}{Екатерина Станиславовна Трифанова}
+\newcommand{\CourseDate}{зима 2024}
+\newcommand{\AuthorInitials}{Александр Калиев}
+\newcommand{\VKLink}{https://vk.com/alekandrkaliev}
+\newcommand{\GithubLink}{https://www.youtube.com/watch?v=dQw4w9WgXcQ}
+
+%%% Колонтитулы
+\usepackage{titleps}
+\newpagestyle{main}{
+	\setheadrule{0.4pt}
+	\headsep = 10mm
+	\sethead{\CourseName}{}{}
+	\setfootrule{0.4pt}                       
+	\setfoot{ИТМО, ФПИиКТ, \CourseDate}{}{\thepage} 
+}
+\pagestyle{main}  
 
 %%% Нумерация уравнений
 \makeatletter
@@ -139,6 +179,7 @@
 
 %%% Гиперссылки
 \usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
 \hypersetup{
 	unicode=true,            % русские буквы в раздела PDF
 	colorlinks=true,       	 % Цветные ссылки вместо ссылок в рамках
@@ -153,11 +194,23 @@
 \usepackage{tikz-cd}     % Коммутативные диаграммы
 \usepackage{tkz-euclide} % Геометрия
 \usepackage{stackengine} % Многострочные тексты в картинках
+\usepackage{textpos}     % TextBlock (главная имба латеха)
+\usepackage{asymptote}
 \usetikzlibrary{angles, babel, quotes}
 
-% Для кода
-\usepackage[]{minted}
+%%% Геометрия листа
+\usepackage{geometry}
+\geometry{
+	a4paper, 
+	left = 20mm,
+	right = 20mm,
+	top = 25mm,
+	bottom = 30mm,
+	footskip = 15mm 
+}
 
+% Для кода
+\usepackage[]{minted} 
 
 % Inkscape setup
 \usepackage{import}
@@ -166,43 +219,9 @@
 \usepackage{transparent}
 
 % SMILEYS !!!
-\usepackage{wasysym}
+\usepackage{wasysym} 
 
 \newcommand{\incfig}[1]{%
     \def\svgwidth{\columnwidth}
     \import{./figures/}{#1.pdf_tex}
 }
-
-\newcommand{\AuthorName}{Д. В. Карпов}
-\newcommand{\SubjectName}{Теория графов}
-\newcommand{\ChapterId}{0}
-\newcommand{\ChapterName}{Теорема Холла \\ (о свадьбах)}
-
-\usepackage{fix-cm}
-
-\newtranslation[to=Russian]{Definition}{Определение}
-
-\title{\SubjectName. \ChapterName}
-\author{\AuthorName}
-\institute{Extended edition}
-\date{2023}
-\makeatletter
-    \ifbeamer@countsect
-      \newtheorem*{theorem}{\translate{Theorem}}[section]
-    \else
-      \newtheorem*{theorem}{\translate{Theorem}}
-    \fi
-    \newtheorem{corollary}{\translate{Corollary}}
-    \newtheorem{fact}{\translate{Fact}}
-    \newtheorem{lemma}{\translate{Lemma}}
-    \newtheorem{problem}{\translate{Problem}}
-    \newtheorem{solution}{\translate{Solution}}
-
-    \theoremstyle{definition}
-    \newtheorem*{definition}{\translate{Definition}}
-    \newtheorem{definitions}{\translate{Definitions}}
-
-    \theoremstyle{example}
-    \newtheorem{example}{\translate{Example}}
-    \newtheorem{examples}{\translate{Examples}}
-\makeatother
